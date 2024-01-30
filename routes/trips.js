@@ -13,16 +13,23 @@ router.get("/", (req, res) => {
 });
 
 router.post("/findTrips", (req, res) => {
-    Trip.find().then((data) => {
-        const tripsMatching = data.filter((trip) =>
-            trip.departure === req.body.departure && 
-            trip.arrival === req.body.arrival &&
-            moment(trip.date).isSame(new Date(Number(req.body.date)), "day")
-        );
-        if (tripsMatching.length === 0) {
+    const today = moment()
+    Trip.find({
+        departure: req.body.departure,
+        arrival: req.body.arrival,
+        date: { $gte: today.toDate(),
+                $lte: moment(today).endOf('day').toDate()}
+    }).then((data) => {
+        console.log(data);
+        // const tripsMatching = data.filter((trip) =>
+        //     trip.departure === req.body.departure && 
+        //     trip.arrival === req.body.arrival &&
+        //     moment(trip.date).isSame(new Date(Number(req.body.date)), "day")
+        // );
+        if (data.length === 0) {
             res.json({ result: false, error: "No trips matching"});
         }
-        res.json({ result: true, allTrips: tripsMatching });
+        res.json({ result: true, allTrips: data });
     });
 });
 
