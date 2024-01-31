@@ -21,11 +21,6 @@ router.post("/findTrips", (req, res) => {
                 $lte: moment(today).endOf('day').toDate()}
     }).then((data) => {
         console.log(data);
-        // const tripsMatching = data.filter((trip) =>
-        //     trip.departure === req.body.departure && 
-        //     trip.arrival === req.body.arrival &&
-        //     moment(trip.date).isSame(new Date(Number(req.body.date)), "day")
-        // );
         if (data.length === 0) {
             res.json({ result: false, error: "No trips matching"});
         }
