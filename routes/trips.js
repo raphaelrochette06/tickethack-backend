@@ -7,9 +7,9 @@ const Trip = require("../models/trips");
 
 // Récupérer tous les voyages
 router.get("/", (req, res) => {
-    Trip.find().then(data => {
-        res.json({ trips: data })
-    });
+  Trip.find().then((data) => {
+    res.json({ trips: data });
+  });
 });
 
 
@@ -30,6 +30,5 @@ router.post("/findTrips", (req, res) => {
         }
     });
 });
-
 
 module.exports = router;
