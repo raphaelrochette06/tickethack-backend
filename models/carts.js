@@ -5,6 +5,11 @@ const cartSchema = mongoose.Schema({
   trip: { type: mongoose.Schema.Types.ObjectId, ref: "trips" },
 });
 
+
+const Cart = mongoose.model("carts", cartSchema);
+
+module.exports = Cart;
+
 // const cartSchema = mongoose.Schema({
 //     departure: String,
 //     arrival: String,
@@ -12,7 +17,3 @@ const cartSchema = mongoose.Schema({
 //     price: Number,
 //     idpaid: Boolean
 // });
-
-const Cart = mongoose.model("carts", cartSchema);
-
-module.exports = Cart;

@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 
 
 router.post("/findTrips", (req, res) => {
-    const today = moment().calendar();
+    const today = moment();
     Trip.find({
         departure: req.body.departure,
         arrival: req.body.arrival,
