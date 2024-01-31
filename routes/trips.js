@@ -12,6 +12,8 @@ router.get("/", (req, res) => {
     });
 });
 
+
+
 router.post("/findTrips", (req, res) => {
     const today = moment()
     Trip.find({
@@ -23,8 +25,9 @@ router.post("/findTrips", (req, res) => {
         console.log(data);
         if (data.length === 0) {
             res.json({ result: false, error: "No trips matching"});
+        } else {
+            res.json({ result: true, allTrips: data });
         }
-        res.json({ result: true, allTrips: data });
     });
 });
 
