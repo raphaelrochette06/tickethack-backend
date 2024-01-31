@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const cartSchema = mongoose.Schema({
   ispaid: Boolean,
-  trips: { type: mongoose.Schema.Types.ObjectId, ref: "trips" },
+  trip: { type: mongoose.Schema.Types.ObjectId, ref: "trips" },
 });
 
 // const cartSchema = mongoose.Schema({
@@ -13,6 +13,6 @@ const cartSchema = mongoose.Schema({
 //     idpaid: Boolean
 // });
 
-const Cart = mongoose.model("cart", cartSchema);
+const Cart = mongoose.model("carts", cartSchema);
 
 module.exports = Cart;
