@@ -4,35 +4,17 @@ const router = express.Router();
 const Cart = require("../models/carts");
 const moment = require("moment");
 
-// router
-//   .post("/addToCart", (req, res) => {
+router
+  .post("/addToCart", (req, res) => {
 
-//     const newCart = new Cart({
-//         ispaid: false,
-//         trip: req.body.id
-//     });
-//     newCart.save().then(() => {  
-//         res.json({result: true, cartList: newCart })
-//     });
-//   });
-
-  router.post("/addToCart", (req, res) => {
-    const tripId = req.body.id;
-
-    Trip.findById(tripId)
-    .then(existingTrip => {
-        if (! existingTrip) {
-            res.json({ result: false, error: "Trip not found" });
-        }
-        const newCart = new Cart({
-            ispaid: false,
-            trip: tripId
-        });
-        newCart.save();
-        res.json({ result: true, cartList: savedCart });
-    })
-});
-
+    const newCart = new Cart({
+        ispaid: false,
+        trip: req.body.id
+    });
+    newCart.save().then(() => {  
+        res.json({result: true, cartList: newCart })
+    });
+  });
 
 
 
